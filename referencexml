@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Server version="8">
+        <Name>OvenMediaEngine</Name>
+        <Type>origin</Type>
+        <IP>*</IP>
+        <StunServer>stun.l.google.com:19302</StunServer>
+        <Bind>
+                <Providers>
+                        <RTMP>
+                                <Port>${env:OME_RTMP_PROV_PORT:1935}</Port>
+                        </RTMP>
+                </Providers>
+                <Publishers>
+                        <OVT>
+                                <Port>${env:OME_ORIGIN_PORT:9000}</Port>
+                        </OVT>
+                        <WebRTC>
+                                <Signalling>
+                                        <Port>${env:OME_SIGNALLING_PORT:3333}</Port>
+										<TLSPort>3334</TLSPort>
+                                </Signalling>
+                                <IceCandidates>
+                                        <TcpRelay>${env:OME_TCP_RELAY_ADDRESS:*:3478}</TcpRelay>
+                                        <IceCandidate>${env:OME_ICE_CANDIDATES:*:10006-10010/udp}</IceCandidate>
+                                </IceCandidates>
+                        </WebRTC>
+                </Publishers>
+<Managers>
+        <API>
+                <Port>8081</Port>
+        </API>
+</Managers>
+        </Bind>
+        <VirtualHosts>
+                <VirtualHost include="VHost*.xml" />
+                <VirtualHost>
+                        <Name>default</Name>
+                        <Host>
+                                <Names>
+                                        <Name>*</Name>
+                                </Names>
+								<TLS>
+                                        <CertPath>/opt/ovenmediaengine/bin/origin_conf/cert.crt</CertPath>
+                                        <KeyPath>/opt/ovenmediaengine/bin/origin_conf/priv8.key</KeyPath>
+                                        <ChainCertPath>/opt/ovenmediaengine/bin/origin_conf/CA.crt</ChainCertPath>
+                                </TLS>
+                        </Host>
+                        <Applications>
+                                <Application>
+                                        <Name>app</Name>
+                                        <Type>live</Type>
+                                        <OutputProfiles>
+                                                <OutputProfile>
+                                                        <Name>bypass_stream</Name>
+                                                        <OutputStreamName>${OriginStreamName}</OutputStreamName>
+                                                        <Encodes>
+                                                                <Audio>
+                                                                        <Bypass>true</Bypass>
+                                                                </Audio>
+                                                                <Video>
+                                                                        <Bypass>true</Bypass>
+                                                                </Video>
+                                                        </Encodes>
+                                                </OutputProfile>
+                                        </OutputProfiles>
+                                        <Providers>
+                                                <OVT />
+                                                <RTMP />
+                                                <RTSPPull />
+                                        </Providers>
+                                        <Publishers>
+                                                <SessionLoadBalancingThreadCount>8</SessionLoadBalancingThreadCount>
+                                                <OVT />
+                                                <WebRTC>
+                                                        <Timeout>30000</Timeout>
+                                                </WebRTC>
+                                        </Publishers>
+                                </Application>
+                        </Applications>
+                </VirtualHost>
+        </VirtualHosts>
+<Managers>
+        <Host>
+                <Names>
+                        <Name>*</Name>
+                </Names>
+        </Host>
+<API>
+        <AccessToken>tokenrtc</AccessToken>
+</API>
+</Managers>
+</Server>
