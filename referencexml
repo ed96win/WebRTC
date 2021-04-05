@@ -39,7 +39,7 @@
                                 <Names>
                                         <Name>*</Name>
                                 </Names>
-								<TLS>
+				<TLS>
                                         <CertPath>/opt/ovenmediaengine/bin/origin_conf/cert.crt</CertPath>
                                         <KeyPath>/opt/ovenmediaengine/bin/origin_conf/priv8.key</KeyPath>
                                         <ChainCertPath>/opt/ovenmediaengine/bin/origin_conf/CA.crt</ChainCertPath>
