@@ -47,7 +47,7 @@
                         </Host>
                         <Applications>
                                 <Application>
-                                        <Name>app</Name>
+                                        <Name>example</Name>
                                         <Type>live</Type>
                                         <OutputProfiles>
                                                 <OutputProfile>
