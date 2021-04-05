@@ -47,7 +47,7 @@
                         </Host>
                         <Applications>
                                 <Application>
-                                        <Name>example</Name>
+                                        <Name>appid</Name>
                                         <Type>live</Type>
                                         <OutputProfiles>
                                                 <OutputProfile>
