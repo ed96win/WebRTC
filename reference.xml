@@ -34,7 +34,7 @@
         <VirtualHosts>
                 <VirtualHost include="VHost*.xml" />
                 <VirtualHost>
-                        <Name>example.mizban.live/Name>
+                        <Name>example.mizban.live</Name>
                         <Host>
                                 <Names>
                                         <Name>*</Name>
