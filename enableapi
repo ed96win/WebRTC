@@ -1,0 +1,15 @@
+<Managers>
+        <API>
+                <Port>8081</Port>
+        </API>
+</Managers>
+<Managers>
+        <Host>
+                <Names>
+                        <Name>*</Name>
+                </Names>
+        </Host>
+<API>
+        <AccessToken>token</AccessToken>
+</API>
+</Managers>
