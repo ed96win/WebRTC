@@ -10,6 +10,6 @@
                 </Names>
         </Host>
 <API>
-        <AccessToken>token</AccessToken>
+        <AccessToken>exampletoken</AccessToken>
 </API>
 </Managers>
